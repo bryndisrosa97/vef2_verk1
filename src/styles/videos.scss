@@ -1,0 +1,46 @@
+@import './config';
+@import './header';
+@import './grid';
+
+.videos {
+  &__category {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    padding-top: 0.5rem;
+  }
+
+  &__title {
+    font-size: 2em;
+    font-weight: 700;
+  }
+
+  h5 {
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 15%;
+    color: rgb(255, 254, 254);
+    font-size: 1rem;
+    left: 83%;
+    padding: 0.2rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    position: relative;
+    width: 15%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid;
+    display: block;
+    height: 3px;
+    margin: 1em 0;
+    margin-bottom: 1.5rem;
+    margin-left: 10%;
+    margin-top: 4rem;
+    padding: 0;
+    width: 80%;
+  }
+}

@@ -1,0 +1,16 @@
+@import './config';
+
+.footer {
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
+
+  &__back {
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+}

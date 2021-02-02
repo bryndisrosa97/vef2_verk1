@@ -1,0 +1,19 @@
+@import './config';
+
+header {
+  .headercontent {
+    align-items: center;
+    text-align: center;
+  }
+
+  .headingtitle {
+    align-items: center;
+    font-size: 2.7em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    .rwd-break { display: none; }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "vef2-2021-v1",
+  "version": "1.0.0",
+  "description": "[Kynning í fyrirlestri](https://youtu.be/pCEHnurbuCU).",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "eslint": "eslint --fix ./src/*.js ./src/**/*.js",
+    "stylelint": "stylelint ./src/styles/*.scss --syntax scss",
+    "test": "concurrently npm:eslint npm:stylelint",
+    "browser-sync": "browser-sync start --server --files /public/styles.css",
+    "sass": "node-sass --source-map-embed --recursive ./src/styles/styles.scss ./public/styles.css",
+    "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./public/styles.css",
+    "demon": "nodemon app.js",
+    "dev": "concurrently  npm:sass npm:sass-watch npm:demon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryndisrosa97/vef2_verk1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryndisrosa97/vef2_verk1/issues"
+  },
+  "homepage": "https://github.com/bryndisrosa97/vef2_verk1#readme",
+  "dependencies": {
+    "14": "^3.1.6",
+    "browser-sync": "^2.26.14",
+    "concurrently": "^5.3.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7",
+    "stylelint": "^13.9.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-standard": "^20.0.0"
+  }
+}

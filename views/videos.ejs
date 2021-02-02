@@ -1,0 +1,60 @@
+<%- include('header') -%>
+
+  <header class="header">
+    <div class="headercontent">
+      <div class="grid">
+        <div class="row">
+          <div class="col col-12">
+            <h1 class="headingtitle">
+              Fræðslumynd<br class="rwd-break">bandaleigan
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="videos">
+    <div class="grid">
+
+      <% categories.forEach((category)=> { %>
+        <div class="row">
+          <div class="col col-12 col-md-10 offset-col-md-1">
+            <h2 class="videos__title">
+              <%= category.title %>
+            </h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <% category.videos.forEach((video)=> { %>
+            <div class="col col-4 col-sm-12">
+              <div class="video">
+                <a href="/<%= videos[video-1].id %>">
+                  <div class="video__image">
+                    <div class="video__img" <%=!video.poster ? 'listItem__image--empty' : '' %>">
+                      <img src="<%= videos[video-1].poster %>" class="video__img" alt="">
+                      <div class="video__durationp">
+                        <%= formatDur(videos[video-1].duration) %>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="video__content">
+                  <h3 class="video__title">
+                    <%= videos[video-1].title %>
+                  </h3>
+                  <p class="video__age">
+                    <%= formatAge(videos[video-1].created) %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <hr>
+          <% }) %>
+        </div>
+      </main>
+
+  <%- include('footer') -%>
