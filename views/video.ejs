@@ -5,9 +5,7 @@
       <div class="grid">
         <div class="row">
           <div class="col col-12">
-            <h1 class="headingtitle">
-              <%= video.title%>
-            </h1>
+            <h1 class="headingtitle"><%= video.title%></h1>
           </div>
         </div>
       </div>
@@ -23,9 +21,9 @@
             <div class="video">
               <video class="video__currVideo" controls>
                 <source src="<%= video.video %>" type="video/mp4" />
-                  <p>Your browser doesn't support HTML5 video. Here is a
-                    <a href="<%= video.video %>">link to the video</a> instead.
-                  </p>
+                <p>Your browser doesn't support HTML5 video. Here is a
+                  <a href="<%= video.video %>">link to the video</a> instead.
+                </p>
               </video>
             </div>
             <div class="video__description">
@@ -38,13 +36,13 @@
 
     <div class="videos">
       <div class="grid">
-        
+
         <div class="row">
           <div class="col col-12 col-md-10 offset-col-md-1">
             <h2 class="videos__title"> Tengd myndbönd </h2>
           </div>
         </div>
-        
+
         <div class="row">
           <% video.related.forEach((video)=> { %>
             <div class="col col-4 col-sm-12">
@@ -69,11 +67,16 @@
                 </div>
               </div>
             </div>
-          <% }) %>
+            <% }) %>
         </div>
-        <hr class="videos__line">
-        <div class="footer__back">
-          <a class="footer__link" href="/">Til baka</a>
-        </div>
-      </main>
-      <%- include('footer') -%>
+      </div>
+    </div>
+
+    <hr class="videos__line">
+    <div class="footer__back">
+      <a class="footer__link" href="/">Til baka</a>
+    </div>
+
+  </main>
+
+  <%- include('footer') -%>
