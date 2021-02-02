@@ -11,7 +11,7 @@
     "sass": "node-sass --source-map-embed --recursive ./src/styles/styles.scss ./public/styles.css",
     "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./public/styles.css",
     "demon": "nodemon app.js",
-    "dev": "concurrently  npm:sass npm:sass-watch npm:demon"
+    "start": "concurrently  npm:sass npm:sass-watch npm:demon"
   },
   "repository": {
     "type": "git",
