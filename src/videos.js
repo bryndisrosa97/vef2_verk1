@@ -1,15 +1,9 @@
-// við notum util og fs til að geta lesið út af diskinum
 const util = require('util');
 const fs = require('fs');
 const express = require('express');
-
-// buum ekki til app heldur skilum router
 const router = express.Router();
-// les upp úr skrá
 const readFileAsync = util.promisify(fs.readFile);
 
-// les upp úr möppu
-// const readdirAsync = util.promisify(fs.readdir);
 /**
  * Higher-order fall sem umlykur async middleware með villumeðhöndlun.
  *
