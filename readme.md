@@ -1,9 +1,5 @@
 # Web2 2021, Assignment 1
 
-[Project Introduction](https://youtu.be/pCEHnurbuCU).
-
-This assignment is based on [group project 2 in Web Development 1, in 2020](https://github.com/vefforritun/vef1-2020-h2).
-
 ## Overview
 
 In essence, you are tasked with building a web application that utilizes data from a JSON file. The main goal is to create a simple video website that uses a backend to generate content and sends it over to the frontend via HTTP. In other words, **no JavaScript code is executed on the frontend**, only on the backend.
