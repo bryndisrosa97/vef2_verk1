@@ -1,111 +1,85 @@
-# Vef2 2021, verkefni 1
+# Web2 2021, Assignment 1
 
-[Kynning í fyrirlestri](https://youtu.be/pCEHnurbuCU).
+[Project Introduction](https://youtu.be/pCEHnurbuCU).
 
-Verkefnið er byggt á [hópverkefni 2 í vefforritun 1, árið 2020](https://github.com/vefforritun/vef1-2020-h2).
+This assignment is based on [group project 2 in Web Development 1, in 2020](https://github.com/vefforritun/vef1-2020-h2).
 
-Í grunninn skal smíða eins vef: lítinn myndbandavef sem nýtir gögn úr JSON skrá. Það sem er ólíkt er, er að vefurinn notar bakenda til að útbúa efni og senda með HTTP yfir í framenda. Þ.e.a.s. **engin JavaScript kóði er keyrður á framenda**, aðeins bakenda.
+## Overview
 
-Að sama skapi þarf ekki að útfæra neina sértæka framenda virkni fyrir vídeóspilar, það er nóg að nota `<video>`.
+In essence, you are tasked with building a web application that utilizes data from a JSON file. The main goal is to create a simple video website that uses a backend to generate content and sends it over to the frontend via HTTP. In other words, **no JavaScript code is executed on the frontend**, only on the backend.
 
-Gögn skulu lesin úr `videos.json` skjali sem gefið er, og engar upplýsingar skulu „harðkóðaðar“ í HTML/EJS. Skrifa þarf Node.js forrit til að lesa gögnin, ekki skal nota fetch/Ajax til að sækja þau á framenda.
+There is no need to implement any specific frontend functionality for the video player; you can simply use `<video>`.
 
-### Myndbandalisti
+## Data Source
 
-Þegar vefur er opnaður skal lista upp alla flokka í þeirri röð sem þeir eru skilgreindir í `videos.json` ásamt öllum myndböndum sem eru í þeim flokki:
+The data should be read from a `videos.json` file provided, and no information should be "hardcoded" in HTML/EJS. You need to write Node.js code to read the data; do not use fetch/Ajax to fetch it on the frontend.
 
-* Plakat fyrir myndband
-* Lengd sem liggur ofan á plakati formuð í mínútur og sekúndur, t.d. `30:20` væri 30 mín og 20 sek, sjá fyrirmynd, í fyrirmynd er bakgrunnslitur `rgba(0, 0, 0, 0.5)`
-* Aldur myndbands formað eftir eftirfarandi reglum og mun á eintölu og fleirtölu (ekki þarf þó að gera ráð fyrir eintölu í 21, 31 o.s.fr.)
-  - Ef aldur er meiri en eitt ár (365 dagar) er birt `Fyrir X ári/árum síðan`
-  - Annars, ef aldur er meiri en mánuður (30 dagar) er birt `Fyrir X mánuði/mánuðum síðan`
-  - Annars, ef aldur er meiri en vika (7 dagar) er birt `Fyrir X viku/vikum síðan`
-  - Annars, ef aldur er meiri en dagur (24 klst) er birt `Fyrir X degi/dögum síðan`
-  - Annars, er aldur í klukkustundum birtur `Fyrir x klukkustund/klukkustundum síðan`
+## Video List
 
-### Myndband
+When the website is opened, it should list all categories in the order defined in `videos.json`, along with all the videos in those categories:
 
-Þegar myndband er valið er farið á aðra síðu með auðkenni á myndbandi í slóð, t.d. `/1`. Þá er athugað hvort til sé myndband með auðkenni `1` og það birt, annars eru `404` skilaboð birt.
+- Poster image for the video
+- Duration displayed on the poster in minutes and seconds, e.g., `30:20` for 30 minutes and 20 seconds (see the example). The background color in the example is `rgba(0, 0, 0, 0.5)`.
+- The age of the video according to the following rules, taking into account singular and plural (no need to account for singular in 21, 31, etc.):
+  - If the age is more than one year (365 days), display "X years ago."
+  - Otherwise, if the age is more than one month (30 days), display "X months ago."
+  - Otherwise, if the age is more than one week (7 days), display "X weeks ago."
+  - Otherwise, if the age is more than one day (24 hours), display "X days ago."
+  - Otherwise, if the age is in hours, display "X hours ago."
 
-## Útfærsla
+## Video Page
 
-Fyrirlesa skal lesa _asynchronously_ af disk með callbacks, promises eða `async await`. Nota þarf `fs` pakkann í node.
+When a video is selected, you should navigate to another page with the video identifier in the URL, e.g., `/1`. Then, check if a video with the identifier `1` exists and display it; otherwise, return a `404` error message.
 
-Notast skal við [EJS template](https://github.com/mde/ejs) til að útbúa HTML. Útbúa skal `header.ejs` og `footer.ejs` sem önnur template nota. `views/` mappa ætti að innihalda template skrár.
+## Implementation
 
-Setja skal upp villumeðhöndlun fyrir almennar villur og ef beðið er um slóð sem ekki er til (404). Skilaboð skulu birt notanda um hvað gerðist („Síða fannst ekki“ – „Villa kom upp“).
+- Reading lectures asynchronously from the disk should be done with callbacks, promises, or `async await`. You should use the `fs` module in Node.js.
+- Use the [EJS template](https://github.com/mde/ejs) to create HTML. Create `header.ejs` and `footer.ejs` templates that other templates can use. The `views/` folder should contain template files.
+- Set up error handling for general errors and for when a non-existent route is requested (404). Provide clear messages to the user about what happened.
+- `app.js` should set up an Express web server, and video functionality should be implemented in `src/videos.js`.
+- Use `app.locals` to make functions accessible in the EJS templates for formatting age and duration. These should be located under `./src`.
+- `public/` should contain data accessible with the static middleware in Express. CSS should be stored in this directory. `public/videos/` should contain images and videos referred to in `videos.json`.
 
-`app.js` skal setja upp Express vefþjón en virkni fyrir myndbönd skal útfærð í `src/videos.js`.
+## Dependencies
 
-Nota skal `app.locals` til að gera föll aðgengileg í EJS template til að forma aldur og tíma lengd. Þau ættu að eiga heima undir `./src`.
+All dependencies should be listed in `package.json` as `devDependency` or `dependency`, as appropriate.
 
-`public/` inniheldur þau gögn sem ættu að vera aðgengileg með _static middleware_ í express. CSS ætti að vera geymt í þessari möppu. `public/videos/` inniheldur myndir og video sem `videos.json` vísar í.
+- `npm start` should start the web server on `localhost` port `3000`.
+- It may be a good idea to set up a `dev` script that runs `nodemon` along with Sass functionality if it is used.
 
-Öll dependency skulu skráð í `package.json` sem `devDependency` eða `dependency`, eftir því hvað við á.
+## Design
 
-`npm start` skal keyra upp vefþjón á `localhost` porti `3000`.
+- Design templates are in `fyrirmynd/`. There is no need to follow the design exactly; it is just a reference, but it should be practical. This is a chance to get started with HTML and CSS, or to improve your skills.
+- Sass can be used to set up the design.
+- Set up stylelint to "lint" CSS or Sass.
 
-Gott getur verið að setja upp `dev` script sem keyrir `nodemon` ásamt Sass virkni ef það er notað.
+## Tools and Dependencies
 
-## Útlit
+Set up the following:
 
-Fyrirmyndir að útliti eru í `fyrirmynd/`, ekki þarf að fylgja útliti nákvæmlega, það er aðeins til viðmiðunnar en skal þó vera nothæft. Hér er tækifæri til að dusta rykið af HTML og CSS eða byrja að skoða það (ef engin fyrri reynsla) til að lenda ekki eftir á, seinna í námskeiðinu.
+- `stylelint`
+- `eslint` for linting JavaScript code
 
-Það er í lagi að hjálpast töluvert mikið að með útlitið, það getur tekið mikinn tíma ef reynsla er ekki til staðar.
+When evaluating the project:
 
-Nota má Sass til að setja upp útlit.
+- Run `npm install` first to fetch all dependencies.
+- Run `npm start` to start the Express web server on port `3000`.
+- Run `npm test`, which should run eslint and stylelint and display no errors.
 
-Setja skal upp stylelint sem „lintar“ CSS eða Sass.
+The project should include `package.json` and `package-lock.json`, which contain all the tools used.
 
-## Tæki og tól
+When the project is downloaded, run `npm install` before running any other commands.
 
-Setja skal upp eftirfarandi:
+Set up Sass and stylelint using `stylelint-config-sass-guidelines` and `stylelint-config-standard` for the project.
 
-* `stylelint`
-* `eslint` til að linta JavaScript kóða
+## Evaluation
 
-Þegar verkefni er metið er:
-
-* `npm install` keyrt fyrst sem sækir öll dependency
-* `npm start` á að keyra upp express vefþjón á porti `3000`
-* `npm test` sem á að keyra eslint og stylelint, og sýna engar villur
-
-Verkefnið skal innihalda `package.json` og `package-lock.json` sem innihalda öll notuð tól.
-
-Þegar verkefnið er sótt verður `npm install` keyrt á undan öllum öðrum skipunum.
-Setja skal upp Sass og stylelint með `stylelint-config-sass-guidelines` og `stylelint-config-standard` fyrir verkefnið.
-
-## Mat
-
-* 20% Tól & linterar keyra skv. forskrift, snyrtilegur kóði
-* 20% Útlit skv. forskrift
-* 20% Express þjónn settur upp með EJS templateum
-* 20% Forsíðu virkni
-* 20% Videosíðu virkni
-
-## Sett fyrir
-
-Verkefni sett fyrir í fyrirlestri fimmtudaginn 14. janúar 2021.
-
-## Skil
-
-Skila skal í Canvas í seinasta lagi fyrir lok dags miðvikudaginn 3. febrúar 2021.
-
-Skilaboð skulu innihalda slóð á GitHub repo fyrir verkefni, og dæmatímakennurum skal hafa verið boðið í repo ([sjá leiðbeiningar](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)). Notendanöfn þeirra eru:
-
-* `jonnigs`
-* `mimiqkz`
-* `Steinalicious`
-* `zurgur`
-
-Hver dagur eftir skil dregur verkefni niður um 10%, allt að 20% ef skilað laugardaginn 6. febrúar 2020 en þá lokar fyrir skil.
-
-## Einkunn
-
-Sett verða fyrir 6 minni verkefni þar sem 5 bestu gilda 8% hvert, samtals 40% af lokaeinkunn.
-
-Sett verða fyrir tvö hópverkefni þar sem hvort um sig gildir 10%, samtals 20% af lokaeinkunn.
+- 20%: Tools and linters run according to the guidelines, code is well-structured.
+- 20%: Design follows the guidelines.
+- 20%: Express server set up with EJS templates.
+- 20%: Homepage functionality.
+- 20%: Video page functionality.
 
 ---
 
-> Útgáfa 0.1
+> Version 0.1
