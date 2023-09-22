@@ -68,13 +68,6 @@ When the project is downloaded, run `npm install` before running any other comma
 
 Set up Sass and stylelint using `stylelint-config-sass-guidelines` and `stylelint-config-standard` for the project.
 
-## Evaluation
-
-- 20%: Tools and linters run according to the guidelines, code is well-structured.
-- 20%: Design follows the guidelines.
-- 20%: Express server set up with EJS templates.
-- 20%: Homepage functionality.
-- 20%: Video page functionality.
 
 ---
 
